@@ -15,19 +15,19 @@ trait HasTranslateableModels
 
     public static function transAttribute(string $attribute): ?string
     {
-        return trans(static::transPackaeKey().'filament-model.attributes.'.static::transModelKey().'.'.$attribute);
+        return trans(static::transPackageKey().'filament-model.attributes.'.static::transModelKey().'.'.$attribute);
     }
 
     public static function transModel(int $number = 1): ?string
     {
-        return ($transValue = trans_choice(static::transPackaeKey().'filament-model.models.'.static::transModelKey(), $number)) !== 'model.models.'.static::transModelKey()
+        return ($transValue = trans_choice(static::transPackageKey().'filament-model.models.'.static::transModelKey(), $number)) !== 'model.models.'.static::transModelKey()
             ? $transValue
             : null;
     }
 
     public static function transNavigationGroup(): ?string
     {
-        return trans(static::transPackaeKey().'filament-model.navigation_group.'.static::transModelKey().'.name');
+        return trans(static::transPackageKey().'filament-model.navigation_group.'.static::transModelKey().'.name');
     }
 
     protected static function transModelKey(): string
@@ -41,7 +41,7 @@ trait HasTranslateableModels
         return Str::of(class_basename($model))->snake()->lower()->toString();
     }
 
-    protected static function transPackaeKey(): string
+    protected static function transPackageKey(): string
     {
         // TODO; interface
         // automatically generate package names
@@ -62,6 +62,6 @@ trait HasTranslateableModels
 
     public static function getPluralModelLabel(): string
     {
-        return static::transModel(number: 2) ?? static::getModelLabel() ?? null;
+        return static::transModel(number: 2) ?? static::getModelLabel() ?? '';
     }
 }

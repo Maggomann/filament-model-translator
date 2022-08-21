@@ -20,7 +20,7 @@ trait HasTranslateableModels
 
     public static function transModel(int $number = 1): ?string
     {
-        return ($transValue = trans_choice(static::transPackaeKey().'filament-model.models.'.static::transModelKey(), $number)) !== 'model.models.'.static::transModelKey() 
+        return ($transValue = trans_choice(static::transPackaeKey().'filament-model.models.'.static::transModelKey(), $number)) !== 'model.models.'.static::transModelKey()
             ? $transValue
             : null;
     }
@@ -30,7 +30,6 @@ trait HasTranslateableModels
         return trans(static::transPackaeKey().'filament-model.navigation_group.'.static::transModelKey().'.name');
     }
 
-
     protected static function transModelKey(): string
     {
         $model = new static();
@@ -38,7 +37,7 @@ trait HasTranslateableModels
         if ($model instanceof Resource) {
             $model = $model->getModel();
         }
- 
+
         return Str::of(class_basename($model))->snake()->lower()->toString();
     }
 

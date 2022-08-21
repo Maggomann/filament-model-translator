@@ -5,5 +5,3 @@ namespace Maggomann\FilamentModelTranslator;
 class FilamentModelTranslator
 {
 }
-
-

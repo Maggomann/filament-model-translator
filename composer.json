@@ -5,7 +5,9 @@
     "keywords": [
         "maggomann",
         "laravel",
-        "filament-model-translator"
+        "filament-model-translator",
+        "translator",
+        "model"
     ],
     "authors": [
         {

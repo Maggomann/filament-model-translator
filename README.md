@@ -2,48 +2,114 @@
 
 [![GitHub Tests Action Status](https://github.com/maggomann/filament-model-translator/workflows/run-tests/badge.svg?branch=master)](https://github.com/maggomann/filament-model-translator/actions?query=workflow%3Arun-tests+branch%3Amaster)
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+## Work in progress (wip)
+This package is still under development. Use at your own risk.
 
 ## Installation
 
-You can install the package via composer:
-
-```bash
-composer require maggomann/filament-model-translator
+Install package via composer.json file:
+```json
+    "require-dev": {
+        "maggomann/filament-model-translator": "dev-beta",
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Maggomann/filament-model-translator.git"
+        }
+    ]
 ```
 
-You can publish and run the migrations with:
+## How is it used?
 
-```bash
-php artisan vendor:publish --tag="filament-model-translator-migrations"
-php artisan migrate
-```
+This package contains a property for translating filament resources and models from translation files.
 
-You can publish the config file with:
+Once the property is installed on the resource or model, the filament navigations and pages are automatically replaced:
 
-```bash
-php artisan vendor:publish --tag="filament-model-translator-config"
-```
-
-This is the contents of the published config file:
 
 ```php
+
+<?php
+
+namespace Maggomann\YourPackageFolder\Resources;
+
+use Filament\Resources\Resource;
+use Maggomann\FilamentModelTranslator\Traits\HasTranslateableModels;
+
+class TranslateableResource extends Resource
+{
+    use HasTranslateableModels;
+
+    protected static ?string $translateableKey = 'your-package-name::';
+
+    public function transPackageKey(): ?string
+    {
+        return static::$translateableKey;
+    }
+}
+
+class LeagueResource extends TranslateableResource
+{
+    protected static ?string $model = League::class;
+
+class FederationResource extends TranslateableResource
+{
+    protected static ?string $model = Federation::class;
+
+```
+
+### The translation file
+
+As a sample: ```resources/lang/de/filament-model.php```
+
+Here is an example how it could look like
+
+```php
+<?php
+
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Models
+    |--------------------------------------------------------------------------
+    */
+
+    'models' => [
+        'federation' => 'Verband|Verbände',
+        'league' => 'Liga|Ligen',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Attribute
+    |--------------------------------------------------------------------------
+    */
+
+    'attributes' => [
+        'federation' => [
+            'title' => 'Titel',
+        ],
+        'league' => [
+            'title' => 'Titel',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Navigation
+    |--------------------------------------------------------------------------
+    */
+
+    'navigation_group' => [
+        'federation' => [
+            'name' => 'Liegen & Turniere',
+        ],
+        'league' => [
+            'name' => 'Liegen & Turniere',
+        ],
+    ],
+
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-model-translator-views"
-```
-
-## Usage
-
-```php
-$filamentModelTranslator = new Maggomann\FilamentModelTranslator();
-echo $filamentModelTranslator->echoPhrase('Hello, Maggomann!');
 ```
 
 ## Testing

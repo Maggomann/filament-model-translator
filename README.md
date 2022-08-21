@@ -1,7 +1,5 @@
 # This is my package filament-model-translator
 
-[![GitHub Tests Action Status](https://github.com/maggomann/filament-model-translator/workflows/run-tests/badge.svg?branch=master)](https://github.com/maggomann/filament-model-translator/actions?query=workflow%3Arun-tests+branch%3Amaster)
-
 ## Work in progress (wip)
 This package is still under development. Use at your own risk.
 

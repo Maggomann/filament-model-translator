@@ -1,0 +1,74 @@
+{
+    "name": "maggomann/filament-model-translator",
+    "description": "This is my package filament-model-translator",
+    "license": "MIT",
+    "keywords": [
+        "maggomann",
+        "laravel",
+        "filament-model-translator"
+    ],
+    "authors": [
+        {
+            "name": "Maggomann",
+            "email": "marco.ehrt@googlemail.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/maggomann/filament-model-translator",
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.9.2",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Maggomann\\FilamentModelTranslator\\": "src",
+            "Maggomann\\FilamentModelTranslator\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Maggomann\\FilamentModelTranslator\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Maggomann\\FilamentModelTranslator\\FilamentModelTranslatorServiceProvider"
+            ],
+            "aliases": {
+                "FilamentModelTranslator": "Maggomann\\FilamentModelTranslator\\Facades\\FilamentModelTranslator"
+            }
+        }
+    },
+    "scripts": {
+        "lint": "vendor/bin/pint --test",
+        "lint:fix": "vendor/bin/pint",
+        "test:coverage": "php -dpcov.enabled=1 -dpcov.directory=src/ vendor/bin/phpunit",
+        "test:unit": "vendor/bin/testbench package:test --no-coverage",
+        "test:types": "vendor/bin/phpstan analyse",
+        "test": [
+            "@lint:fix",
+            "@test:types",
+            "@test:unit"
+        ]
+    }
+}

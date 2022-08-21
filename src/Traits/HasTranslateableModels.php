@@ -4,6 +4,7 @@ namespace Maggomann\FilamentModelTranslator\Traits;
 
 use Filament\Resources\Resource;
 use Illuminate\Support\Str;
+use Maggomann\FilamentModelTranslator\Contracts\TranslateableModels;
 
 trait HasTranslateableModels
 {
@@ -12,6 +13,26 @@ trait HasTranslateableModels
     protected static ?string $translateableKeyName = null;
 
     protected static ?string $translateableKeyNavigationGroupe = null;
+
+    public static function noInterfaceIsPresent(): bool
+    {
+        return once(function () {
+            return ! new static() instanceof TranslateableModels;
+        });
+    }
+
+    public static function transModelKey(): string
+    {
+        return once(function () {
+            $model = new static();
+
+            if ($model instanceof Resource) {
+                $model = $model->getModel();
+            }
+
+            return Str::of(class_basename($model))->snake()->lower()->toString();
+        });
+    }
 
     public static function transAttribute(string $attribute): ?string
     {
@@ -30,38 +51,35 @@ trait HasTranslateableModels
         return trans(static::transPackageKey().'filament-model.navigation_group.'.static::transModelKey().'.name');
     }
 
-    protected static function transModelKey(): string
-    {
-        $model = new static();
-
-        if ($model instanceof Resource) {
-            $model = $model->getModel();
-        }
-
-        return Str::of(class_basename($model))->snake()->lower()->toString();
-    }
-
     protected static function transPackageKey(): string
     {
-        // TODO; interface
-        // automatically generate package names
-        $model = new static();
-
-        return $model->transPackageKey() ?? '';
+        return (new static())->transPackageKey() ?? '';
     }
 
     public static function getModelLabel(): string
     {
-        return static::transModel(number: 1) ?? static::$modelLabel ?? static::getLabel() ?? get_model_label(static::getModel());
+        if (static::noInterfaceIsPresent()) {
+            return parent::getModelLabel();
+        }
+
+        return static::transModel(number: 1);
     }
 
     protected static function getNavigationGroup(): ?string
     {
-        return static::transNavigationGroup() ?? static::transModel(number: 1) ?? static::$navigationGroup ?? null;
+        if (static::noInterfaceIsPresent()) {
+            return parent::getNavigationGroup();
+        }
+
+        return static::transNavigationGroup();
     }
 
     public static function getPluralModelLabel(): string
     {
-        return static::transModel(number: 2) ?? static::getModelLabel() ?? '';
+        if (static::noInterfaceIsPresent()) {
+            return parent::getPluralModelLabel();
+        }
+
+        return static::transModel(number: 2);
     }
 }

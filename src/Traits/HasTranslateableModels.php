@@ -21,39 +21,33 @@ trait HasTranslateableModels
         });
     }
 
+    public static function keyIsNotTranslated($translationKey, $translation): bool
+    {
+        if ($translation === null) {
+            return true;
+        }
+
+        if ($translation === '') {
+            return true;
+        }
+
+        return $translationKey === $translation;
+    }
+
     public static function transModelKey(): string
     {
-        return once(function () {
-            $model = new static();
+        $model = new static();
 
-            if ($model instanceof Resource) {
-                $model = $model->getModel();
-            }
+        if ($model instanceof Resource) {
+            $model = $model->getModel();
+        }
 
-            return Str::of(class_basename($model))->snake()->lower()->toString();
-        });
+        return Str::of(class_basename($model))->snake()->lower()->toString();
     }
 
-    public static function transAttribute(string $attribute): ?string
+    public static function transPackageKey(): string
     {
-        return trans(static::transPackageKey().'filament-model.attributes.'.static::transModelKey().'.'.$attribute);
-    }
-
-    public static function transModel(int $number = 1): ?string
-    {
-        return ($transValue = trans_choice(static::transPackageKey().'filament-model.models.'.static::transModelKey(), $number)) !== 'model.models.'.static::transModelKey()
-            ? $transValue
-            : null;
-    }
-
-    public static function transNavigationGroup(): ?string
-    {
-        return trans(static::transPackageKey().'filament-model.navigation_group.'.static::transModelKey().'.name');
-    }
-
-    protected static function transPackageKey(): string
-    {
-        return (new static())->transPackageKey() ?? '';
+        return static::$translateableKey;
     }
 
     public static function getModelLabel(): string
@@ -62,16 +56,16 @@ trait HasTranslateableModels
             return parent::getModelLabel();
         }
 
-        return static::transModel(number: 1);
-    }
+        $equalTranslationKey = 'filament-model.models.'.static::transModelKey();
+        $translationKey = static::transPackageKey().$equalTranslationKey;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        if (static::noInterfaceIsPresent()) {
-            return parent::getNavigationGroup();
+        $translation = trans_choice($translationKey, number: 1);
+
+        if (static::keyIsNotTranslated($translationKey, $translation)) {
+            return parent::getModelLabel();
         }
 
-        return static::transNavigationGroup();
+        return $translation;
     }
 
     public static function getPluralModelLabel(): string
@@ -80,6 +74,33 @@ trait HasTranslateableModels
             return parent::getPluralModelLabel();
         }
 
-        return static::transModel(number: 2);
+        $equalTranslationKey = 'filament-model.models.'.static::transModelKey();
+        $translationKey = static::transPackageKey().$equalTranslationKey;
+
+        $translation = trans_choice($translationKey, number: 2);
+
+        if (static::keyIsNotTranslated($translationKey, $translation)) {
+            return parent::getPluralModelLabel();
+        }
+
+        return $translation;
+    }
+
+    protected static function getNavigationGroup(): ?string
+    {
+        if (static::noInterfaceIsPresent()) {
+            return parent::getNavigationGroup();
+        }
+
+        $equalTranslationKey = 'filament-model.navigation_group.'.static::transModelKey().'.name';
+        $translationKey = ''.static::transPackageKey().$equalTranslationKey;
+
+        $translation = trans($translationKey);
+
+        if (static::keyIsNotTranslated($translationKey, $translation)) {
+            return parent::getPluralModelLabel();
+        }
+
+        return $translation;
     }
 }

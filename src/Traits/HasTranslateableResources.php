@@ -14,7 +14,7 @@ trait HasTranslateableResources
 
     protected static ?string $translateableKeyNavigationGroupe = null;
 
-    public static function noInterfaceIsPresent(): bool
+    public static function interfaceIsNotPresent(): bool
     {
         return once(function () {
             return ! new static() instanceof TranslateableResources;
@@ -48,7 +48,7 @@ trait HasTranslateableResources
 
     public static function getModelLabel(): string
     {
-        if (static::noInterfaceIsPresent()) {
+        if (static::interfaceIsNotPresent()) {
             return parent::getModelLabel();
         }
 
@@ -61,7 +61,7 @@ trait HasTranslateableResources
 
     public static function getPluralModelLabel(): string
     {
-        if (static::noInterfaceIsPresent()) {
+        if (static::interfaceIsNotPresent()) {
             return parent::getPluralModelLabel();
         }
 
@@ -74,7 +74,7 @@ trait HasTranslateableResources
 
     protected static function getNavigationGroup(): ?string
     {
-        if (static::noInterfaceIsPresent()) {
+        if (static::interfaceIsNotPresent()) {
             return parent::getNavigationGroup();
         }
 

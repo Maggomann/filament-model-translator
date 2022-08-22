@@ -14,5 +14,5 @@ interface TranslateableResources
 
     public static function keyIsNotTranslated(string $translationKey, string $translation): bool;
 
-    public static function noInterfaceIsPresent(): bool;
+    public static function interfaceIsNotPresent(): bool;
 }

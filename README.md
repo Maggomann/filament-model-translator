@@ -32,12 +32,12 @@ Once the property is installed on the resource or model, the filament navigation
 namespace Maggomann\YourPackageFolder\Resources;
 
 use Filament\Resources\Resource;
-use Maggomann\FilamentModelTranslator\Contracts\TranslateableModels;
-use Maggomann\FilamentModelTranslator\Traits\HasTranslateableModels;
+use Maggomann\FilamentModelTranslator\Contracts\TranslateableResources;
+use Maggomann\FilamentModelTranslator\Traits\HasTranslateableResources;
 
-class TranslateableResource extends Resource implements TranslateableModels
+class TranslateableResource extends Resource implements TranslateableResources
 {
-    use HasTranslateableModels;
+    use HasTranslateableResources;
 
     protected static ?string $translateableKey = 'your-package-name::';
 

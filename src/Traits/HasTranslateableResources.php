@@ -67,7 +67,7 @@ trait HasTranslateableResources
 
         return static::transChoice(
             keyToBeTranslated: 'filament-model.models.',
-            number: 1,
+            number: 2,
             defaultCallback: fn () => parent::getPluralModelLabel()
         );
     }

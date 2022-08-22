@@ -8,7 +8,7 @@ interface TranslateableResources
 
     public static function getPluralModelLabel(): string;
 
-    public static function transResourceKey(): string;
+    public static function translationKeyOfTheModel(string $modelName): string;
 
     public static function translateablePackageKey(): ?string;
 

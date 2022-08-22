@@ -34,11 +34,11 @@ trait HasTranslateableResources
         return $translationKey === $translation;
     }
 
-    public static function transResourceKey(): string
+    public static function translationKeyOfTheModel(string $modelName): string
     {
-        $model = (new static())->getModel();
-
-        return Str::of(class_basename($model))->snake()->lower()->toString();
+        return once(function () use ($modelName) {
+            return Str::of(class_basename($modelName))->snake()->lower()->toString();
+        });
     }
 
     public static function translateablePackageKey(): string
@@ -86,7 +86,7 @@ trait HasTranslateableResources
 
     private static function trans($keyToBeTranslated, Closure $defaultCallback): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::transResourceKey().'.name';
+        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::getModel()).'.name';
         $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
 
         $translation = trans($translationKey);
@@ -100,7 +100,7 @@ trait HasTranslateableResources
 
     private static function transChoice(string $keyToBeTranslated, int $number, Closure $defaultCallback): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::transResourceKey();
+        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::getModel());
         $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
 
         $translation = trans_choice($translationKey, $number);

@@ -86,29 +86,33 @@ trait HasTranslateableResources
 
     private static function trans($keyToBeTranslated, Closure $defaultCallback): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::getModel()).'.name';
-        $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
+        return once(function () use ($keyToBeTranslated, $defaultCallback) {
+            $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::getModel()).'.name';
+            $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
 
-        $translation = trans($translationKey);
+            $translation = trans($translationKey);
 
-        if (static::keyIsNotTranslated($translationKey, $translation)) {
-            return $defaultCallback();
-        }
+            if (static::keyIsNotTranslated($translationKey, $translation)) {
+                return $defaultCallback();
+            }
 
-        return $translation;
+            return $translation;
+        });
     }
 
     private static function transChoice(string $keyToBeTranslated, int $number, Closure $defaultCallback): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::getModel());
-        $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
+        return once(function () use ($keyToBeTranslated, $number, $defaultCallback) {
+            $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::getModel());
+            $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
 
-        $translation = trans_choice($translationKey, $number);
+            $translation = trans_choice($translationKey, $number);
 
-        if (static::keyIsNotTranslated($translationKey, $translation)) {
-            return $defaultCallback();
-        }
+            if (static::keyIsNotTranslated($translationKey, $translation)) {
+                return $defaultCallback();
+            }
 
-        return $translation;
+            return $translation;
+        });
     }
 }

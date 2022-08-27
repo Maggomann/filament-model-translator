@@ -2,7 +2,7 @@
 
 namespace Maggomann\FilamentModelTranslator\Contracts;
 
-interface TranslateableResources
+interface Translateable
 {
     public static function getModelLabel(): string;
 
@@ -15,4 +15,6 @@ interface TranslateableResources
     public static function keyIsNotTranslated(string $translationKey, string $translation): bool;
 
     public static function interfaceIsNotPresent(): bool;
+
+    public static function modelToTranslate(): string;
 }

@@ -2,7 +2,7 @@
 Currently there is no configuration setting.
 
 The package translates the Eloquent models using a currently specified translation file.
-The Eloquent models are used internally in [filament's](https://filamentphp.com/ Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.
+The Eloquent models are used internally in [filament's](https://filamentphp.com/) Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.
 
 ## Work in progress (wip)
 This package is still under development. Use at your own risk.

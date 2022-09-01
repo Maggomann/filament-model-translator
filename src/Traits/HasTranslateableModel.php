@@ -28,8 +28,9 @@ trait HasTranslateableModel
 
     private static function transParameter(string $keyToBeTranslated, string $parameter): ?string
     {
-        return once(function () use ($keyToBeTranslated, $parameter) {
-            $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel().".{$parameter}";
+        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel().".{$parameter}";
+
+        return once(function () use ($equalTranslationKey) {
             $translationKey = static::translateablePackageKey().$equalTranslationKey;
 
             return trans($translationKey);

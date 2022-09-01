@@ -60,8 +60,9 @@ trait HasTranslateable
 
     private static function trans($keyToBeTranslated, Closure $defaultCallback): ?string
     {
-        return once(function () use ($keyToBeTranslated, $defaultCallback) {
-            $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::modelToTranslate()).'.name';
+        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::modelToTranslate()).'.name';
+
+        return once(function () use ($equalTranslationKey, $defaultCallback) {
             $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
 
             $translation = trans($translationKey);
@@ -76,8 +77,9 @@ trait HasTranslateable
 
     private static function transChoice(string $keyToBeTranslated, int $number, Closure $defaultCallback): ?string
     {
-        return once(function () use ($keyToBeTranslated, $number, $defaultCallback) {
-            $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::modelToTranslate());
+        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::modelToTranslate());
+
+        return once(function () use ($equalTranslationKey, $number, $defaultCallback) {
             $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
 
             $translation = trans_choice($translationKey, $number);

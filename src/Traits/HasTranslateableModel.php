@@ -6,10 +6,10 @@ use Illuminate\Support\Str;
 
 trait HasTranslateableModel
 {
-    public static function translationKeyOfTheModel(): string
+    public static function translationKeyOfTheModel(string $modelClass): string
     {
-        return once(function () {
-            return Str::of(class_basename(new static()))->snake()->lower()->toString();
+         return once(function () use ($modelClass) {
+            return Str::of(class_basename($modelClass))->snake()->lower()->toString();
         });
     }
 
@@ -22,13 +22,14 @@ trait HasTranslateableModel
     {
         return static::transParameter(
             keyToBeTranslated: 'filament-model.attributes.',
+            modelClass: static::class,
             parameter: $attribute,
         );
     }
 
-    private static function transParameter(string $keyToBeTranslated, string $parameter): ?string
+    private static function transParameter(string $keyToBeTranslated, string $modelClass, string $parameter): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel().".{$parameter}";
+        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel($modelClass).".{$parameter}";
 
         return once(function () use ($equalTranslationKey) {
             $translationKey = static::translateablePackageKey().$equalTranslationKey;

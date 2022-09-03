@@ -38,8 +38,10 @@ trait HasTranslateable
             return parent::getModelLabel();
         }
 
+        $keyToBeTranslated = 'filament-model.models.'.static::translationKeyOfTheModel(static::modelToTranslate());
+
         return static::transChoice(
-            keyToBeTranslated: 'filament-model.models.',
+            keyToBeTranslated: $keyToBeTranslated,
             number: 1,
             defaultCallback: fn () => parent::getModelLabel()
         );
@@ -51,8 +53,10 @@ trait HasTranslateable
             return parent::getPluralModelLabel();
         }
 
+        $keyToBeTranslated = 'filament-model.models.'.static::translationKeyOfTheModel(static::modelToTranslate());
+
         return static::transChoice(
-            keyToBeTranslated: 'filament-model.models.',
+            keyToBeTranslated: $keyToBeTranslated,
             number: 2,
             defaultCallback: fn () => parent::getPluralModelLabel()
         );
@@ -60,10 +64,8 @@ trait HasTranslateable
 
     private static function trans($keyToBeTranslated, Closure $defaultCallback): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::modelToTranslate()).'.name';
-
-        return once(function () use ($equalTranslationKey, $defaultCallback) {
-            $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
+        return once(function () use ($keyToBeTranslated, $defaultCallback) {
+            $translationKey = ''.static::translateablePackageKey().$keyToBeTranslated;
 
             $translation = trans($translationKey);
 
@@ -77,10 +79,8 @@ trait HasTranslateable
 
     private static function transChoice(string $keyToBeTranslated, int $number, Closure $defaultCallback): ?string
     {
-        $equalTranslationKey = $keyToBeTranslated.static::translationKeyOfTheModel(static::modelToTranslate());
-
-        return once(function () use ($equalTranslationKey, $number, $defaultCallback) {
-            $translationKey = ''.static::translateablePackageKey().$equalTranslationKey;
+        return once(function () use ($keyToBeTranslated, $number, $defaultCallback) {
+            $translationKey = ''.static::translateablePackageKey().$keyToBeTranslated;
 
             $translation = trans_choice($translationKey, $number);
 

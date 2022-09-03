@@ -32,8 +32,10 @@ trait HasTranslateableResources
             return parent::getNavigationGroup();
         }
 
+        $keyToBeTranslated = 'filament-model.navigation_group.'.static::translationKeyOfTheModel(static::modelToTranslate()).'.name';
+
         return static::trans(
-            keyToBeTranslated: 'filament-model.navigation_group.',
+            keyToBeTranslated: $keyToBeTranslated,
             defaultCallback: fn () => parent::getNavigationGroup()
         );
     }

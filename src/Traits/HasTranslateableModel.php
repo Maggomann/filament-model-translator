@@ -18,7 +18,7 @@ trait HasTranslateableModel
         return static::$translateablePackageKey;
     }
 
-    protected static function transAttribute(string $attribute): ?string
+    public static function transAttribute(string $attribute): ?string
     {
         $keyToBeTranslated = 'filament-model.attributes.'.static::translationKeyOfTheModel(static::class).".{$attribute}";
 

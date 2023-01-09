@@ -20,19 +20,21 @@ trait HasTranslateableModel
 
     public static function transAttribute(string $attribute): ?string
     {
+        $locale = app()->getLocale();
         $keyToBeTranslated = 'filament-model.attributes.'.static::translationKeyOfTheModel(static::class).".{$attribute}";
 
         return static::transParameter(
             keyToBeTranslated: $keyToBeTranslated,
+            locale: $locale
         );
     }
 
-    private static function transParameter(string $keyToBeTranslated): ?string
+    private static function transParameter(string $keyToBeTranslated, string $locale): ?string
     {
-        return once(function () use ($keyToBeTranslated) {
+        return once(function () use ($keyToBeTranslated, $locale) {
             $translationKey = static::translateablePackageKey().$keyToBeTranslated;
 
-            return trans($translationKey);
+            return trans($translationKey, [], $locale);
         });
     }
 }

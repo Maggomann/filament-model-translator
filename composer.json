@@ -24,15 +24,16 @@
         "spatie/once": "^3.1"
     },
     "require-dev": {
+        "filament/filament": "^2.1",
         "laravel/pint": "^1.0",
         "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.22",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "filament/filament": "^2.1"
+        "phpunit/phpunit": "^9.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -50,7 +51,8 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "pestphp/pest-plugin": true
         }
     },
     "extra": {
@@ -66,7 +68,8 @@
     "scripts": {
         "lint": "vendor/bin/pint --test",
         "lint:fix": "vendor/bin/pint",
-        "test:coverage": "php -dpcov.enabled=1 -dpcov.directory=src/ vendor/bin/phpunit",
+        "test:pest": "vendor/bin/pest --order-by default -d memory_limit=6144M",
+        "test:pest-coverage": "php -dpcov.enabled=1 -dpcov.directory=. -dpcov.exclude='~vendor~' vendor/bin/pest -d memory_limit=6144M --testdox --verbose --coverage --min=85",
         "test:unit": "vendor/bin/testbench package:test --no-coverage",
         "test:types": "vendor/bin/phpstan analyse",
         "test": [

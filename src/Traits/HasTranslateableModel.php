@@ -18,9 +18,12 @@ trait HasTranslateableModel
         return static::$translateablePackageKey;
     }
 
-    public static function transAttribute(string $attribute): ?string
+    public static function transAttribute(string $attribute, ?string $locale = null): ?string
     {
-        $locale = app()->getLocale();
+        if (is_null($locale)) {
+            $locale = app()->getLocale();
+        }
+
         $keyToBeTranslated = 'filament-model.attributes.'.static::translationKeyOfTheModel(static::class).".{$attribute}";
 
         return static::transParameter(

@@ -1,6 +1,6 @@
 {
     "name": "maggomann/filament-model-translator",
-    "description": "This is my package filament-model-translator",
+    "description": "The package translates the Eloquent models using a currently specified translation file. The Eloquent models are used internally in [filament's](https://filamentphp.com/) Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.",
     "license": "MIT",
     "keywords": [
         "maggomann",

@@ -1,4 +1,8 @@
-# This is my package filament-model-translator
+[![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translater)](https://github.com/Maggomann/filament-model-translater/blob/beta/LICENSE.md)
+
+---
+
+# filament-model-translator package for filament 2.x
 Currently there is no configuration setting.
 
 The package translates the Eloquent models using a currently specified translation file.
@@ -105,7 +109,7 @@ return [
 ];
 ```
 
-### The trait HasTranslateableResources for the resource classes 
+### The trait HasTranslateableResources for the resource classes
 
 The trait `HasTranslateableResources` internally translates the method calls automatically:
 
@@ -209,7 +213,7 @@ public static function getPluralModelLabel(): string;
 
 You can use the trait `HasTranslateableRelationManager` in the following ways:
 
-Example: 
+Example:
 
 ```php
 <?php
@@ -331,3 +335,7 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

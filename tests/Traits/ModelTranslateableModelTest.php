@@ -2,7 +2,7 @@
 
 use Illuminate\Translation\ArrayLoader;
 use Illuminate\Translation\Translator;
-use Maggomann\FilamentModelTranslator\Tests\Model\TestModelTranslateableModel;
+use Maggomann\FilamentModelTranslator\Tests\Classes\TestModelTranslateableModel;
 
 beforeEach(function () {
     $this->loader = new ArrayLoader();
@@ -36,7 +36,7 @@ it('returns the right translation key of the model', function () {
     $this->assertSame('test_model_translateable_model', $testModel::translationKeyOfTheModel($testModel::class));
 });
 
-it('returns the right trans attribute', function ($languageKey, $translation) {
+it('returns the right translation attribute', function ($languageKey, $translation) {
     app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
@@ -47,3 +47,21 @@ it('returns the right trans attribute', function ($languageKey, $translation) {
     ['de', 'Beispiel'],
     ['en', 'Example'],
 ]);
+
+it(
+    'returns the correct translation attribute when we switch to another language',
+    function (
+        $localKey,
+        $switchLocale,
+        $translation
+    ) {
+        app()->singleton('translator', fn () => new Translator($this->loader, $localKey));
+        app()->setLocale($localKey);
+
+        $testModel = new TestModelTranslateableModel();
+
+        $this->assertSame($translation, $testModel::transAttribute('example', [], $switchLocale));
+    })->with([
+        ['de', 'en', 'Example'],
+        ['en', 'de', 'Beispiel'],
+    ]);

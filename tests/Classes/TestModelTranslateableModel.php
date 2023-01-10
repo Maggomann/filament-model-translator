@@ -1,6 +1,6 @@
 <?php
 
-namespace Maggomann\FilamentModelTranslator\Tests\Model;
+namespace Maggomann\FilamentModelTranslator\Tests\Classes;
 
 use Illuminate\Database\Eloquent\Model;
 use Maggomann\FilamentModelTranslator\Traits\HasTranslateableModel;

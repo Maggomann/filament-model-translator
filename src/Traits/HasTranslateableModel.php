@@ -18,7 +18,7 @@ trait HasTranslateableModel
         return static::$translateablePackageKey;
     }
 
-    public static function transAttribute(string $attribute, ?string $locale = null): ?string
+    public static function transAttribute(string $attribute, array $replace = [], ?string $locale = null): ?string
     {
         if (is_null($locale)) {
             $locale = app()->getLocale();
@@ -28,16 +28,17 @@ trait HasTranslateableModel
 
         return static::transParameter(
             keyToBeTranslated: $keyToBeTranslated,
+            replace: $replace,
             locale: $locale
         );
     }
 
-    private static function transParameter(string $keyToBeTranslated, string $locale): ?string
+    private static function transParameter(string $keyToBeTranslated, array $replace, string $locale): ?string
     {
-        return once(function () use ($keyToBeTranslated, $locale) {
+        return once(function () use ($keyToBeTranslated, $replace, $locale) {
             $translationKey = static::translateablePackageKey().$keyToBeTranslated;
 
-            return trans($translationKey, [], $locale);
+            return trans($translationKey, $replace, $locale);
         });
     }
 }

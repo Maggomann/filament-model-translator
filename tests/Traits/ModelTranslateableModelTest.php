@@ -5,8 +5,8 @@ use Illuminate\Translation\Translator;
 use Maggomann\FilamentModelTranslator\Tests\Classes\TestModelTranslateableModel;
 
 beforeEach(function () {
-    $this->loader = new ArrayLoader();
-    $this->loader->addMessages(
+    $loader = new ArrayLoader();
+    $loader->addMessages(
         'de',
         'filament-model',
         [
@@ -17,7 +17,7 @@ beforeEach(function () {
             ],
         ]
     );
-    $this->loader->addMessages(
+    $loader->addMessages(
         'en',
         'filament-model',
         [
@@ -28,6 +28,7 @@ beforeEach(function () {
             ],
         ]
     );
+    app()->singleton('translator', fn () => new Translator($loader, 'de'));
 });
 
 it('returns the right translation key of the model', function () {
@@ -37,7 +38,6 @@ it('returns the right translation key of the model', function () {
 });
 
 it('returns the right translation attribute', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $testModel = new TestModelTranslateableModel();
@@ -55,7 +55,6 @@ it(
         $switchLocale,
         $translation
     ) {
-        app()->singleton('translator', fn () => new Translator($this->loader, $localKey));
         app()->setLocale($localKey);
 
         $testModel = new TestModelTranslateableModel();

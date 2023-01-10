@@ -2,13 +2,12 @@
 
 use Illuminate\Translation\ArrayLoader;
 use Illuminate\Translation\Translator;
-use Maggomann\FilamentModelTranslator\Tests\Classes\TestHasTranslateableRelationManager;
 use Maggomann\FilamentModelTranslator\Tests\Classes\TestHasTranslateableResource;
 use Maggomann\FilamentModelTranslator\Tests\Classes\TestModelTranslateableModel;
 
 beforeEach(function () {
-    $this->loader = new ArrayLoader();
-    $this->loader->addMessages(
+    $loader = new ArrayLoader();
+    $loader->addMessages(
         'de',
         'filament-model',
         [
@@ -23,7 +22,7 @@ beforeEach(function () {
         ],
     );
 
-    $this->loader->addMessages(
+    $loader->addMessages(
         'en',
         'filament-model',
         [
@@ -37,6 +36,8 @@ beforeEach(function () {
             ],
         ],
     );
+
+    app()->singleton('translator', fn () => new Translator($loader, 'de'));
 });
 
 it('returns the correct model class name', function () {
@@ -44,7 +45,6 @@ it('returns the correct model class name', function () {
 });
 
 it('returns the right model label', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $this->assertSame($translation, TestHasTranslateableResource::getModelLabel());
@@ -54,7 +54,6 @@ it('returns the right model label', function ($languageKey, $translation) {
 ]);
 
 it('returns the right plural model label', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $this->assertSame($translation, TestHasTranslateableResource::getPluralModelLabel());
@@ -64,7 +63,6 @@ it('returns the right plural model label', function ($languageKey, $translation)
 ]);
 
 it('returns the right navigation label', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $this->assertFalse(TestHasTranslateableResource::interfaceIsNotPresent());
@@ -72,14 +70,4 @@ it('returns the right navigation label', function ($languageKey, $translation) {
 })->with([
     ['de', 'Beispiel Navigationsname'],
     ['en', 'Example navigation name'],
-]);
-
-it('returns the right model to translate string', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
-    app()->setLocale($languageKey);
-
-    $this->assertSame($translation, TestHasTranslateableRelationManager::modelToTranslate());
-})->with([
-    ['de', 'testing model'],
-    ['en', 'testing model'],
 ]);

@@ -69,7 +69,7 @@
         "lint": "vendor/bin/pint --test",
         "lint:fix": "vendor/bin/pint",
         "test:pest": "vendor/bin/pest --order-by default -d memory_limit=6144M",
-        "test:pest-coverage": "php -dpcov.enabled=1 -dpcov.directory=. -dpcov.exclude='~vendor~' vendor/bin/pest -d memory_limit=6144M --testdox --verbose --coverage --min=85",
+        "test:pest-coverage": "php -dpcov.enabled=1 -dpcov.directory=. -dpcov.exclude='~vendor~' vendor/bin/pest -d memory_limit=6144M --testdox --verbose --coverage --min=90",
         "test:unit": "vendor/bin/testbench package:test --no-coverage",
         "test:types": "vendor/bin/phpstan analyse",
         "test": [

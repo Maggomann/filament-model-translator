@@ -5,11 +5,11 @@ use Illuminate\Translation\Translator;
 use Maggomann\FilamentModelTranslator\Tests\Classes\TestHasTranslateableResourceWithoutInterface;
 
 beforeEach(function () {
-    $this->loader = new ArrayLoader();
+    $loader = new ArrayLoader();
+    app()->singleton('translator', fn () => new Translator($loader, 'de'));
 });
 
 it('returns the default model label', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $this->assertSame($translation, TestHasTranslateableResourceWithoutInterface::getModelLabel());
@@ -19,7 +19,6 @@ it('returns the default model label', function ($languageKey, $translation) {
 ]);
 
 it('returns the default as plural model label', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $this->assertSame($translation, TestHasTranslateableResourceWithoutInterface::getPluralModelLabel());
@@ -29,7 +28,6 @@ it('returns the default as plural model label', function ($languageKey, $transla
 ]);
 
 it('returns null as navigation label', function ($languageKey, $translation) {
-    app()->singleton('translator', fn () => new Translator($this->loader, $languageKey));
     app()->setLocale($languageKey);
 
     $this->assertTrue(TestHasTranslateableResourceWithoutInterface::interfaceIsNotPresent());

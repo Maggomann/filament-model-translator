@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translater)](https://github.com/Maggomann/filament-model-translater/blob/beta/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translator)](https://github.com/Maggomann/filament-model-translator/blob/beta/LICENSE.md)
 
 ---
 

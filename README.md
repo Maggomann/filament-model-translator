@@ -1,5 +1,4 @@
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/Maggomann/filament-model-translator/run-tests.yml?branch%3Av0.x&label=tests)](https://github.com/Maggomann/filament-model-translator/actions?query=workflow%3Arun-tests+branch%3Av0.x) [![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translator)](https://github.com/Maggomann/filament-model-translator/blob/v0.x/LICENSE.md)
-
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/Maggomann/filament-model-translator/run-tests.yml?branch%3Av0.x&label=tests)](https://github.com/Maggomann/filament-model-translator/actions?query=workflow%3Arun-tests+branch%3Av0.x) [![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translator)](https://github.com/Maggomann/filament-model-translator/blob/v0.x/LICENSE.md) [![Total Downloads](https://img.shields.io/packagist/dt/maggomann/filament-model-translator.svg?style=flat-square)](https://packagist.org/packages/maggomann/filament-model-translator)
 ---
 
 # Filament model translator package for filament v2.x
@@ -14,7 +13,7 @@ The Eloquent models are used internally in [filament's](https://filamentphp.com/
 
 PHP: `8.1`
 
-Laravel: `8` & `9`
+Laravel: `9`
 
 ## Installation
 

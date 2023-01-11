@@ -2,14 +2,19 @@
 
 ---
 
-# filament-model-translator package for filament 2.x
-Currently there is no configuration setting.
+# Filament model translator package for filament v2.x
+This package is tailored for [Filament Admin Panel v2.x](https://filamentphp.com/docs/2.x/admin/installation).
+
+Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/2.x/admin/installation)
 
 The package translates the Eloquent models using a currently specified translation file.
-The Eloquent models are used internally in [filament's](https://filamentphp.com/) Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.
+The Eloquent models are used internally in [filament's](https://filamentphp.com/docs/2.x/admin/installation) Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.
 
-## Work in progress (wip)
-This package is still under development. Use at your own risk.
+## Supported Versions
+
+PHP: `8.0` & `8.1`
+
+Laravel: `8` & `9`
 
 ## Installation
 
@@ -335,6 +340,19 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Marco Ehrt](https://github.com/Maggomann)
+- [All Contributors](../../contributors)
 
 ## License
 

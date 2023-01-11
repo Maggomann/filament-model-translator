@@ -18,18 +18,17 @@
     ],
     "homepage": "https://github.com/maggomann/filament-model-translator",
     "require": {
-        "php": "^8.0|^8.1",
-        "illuminate/contracts": "^8.56|^9.0",
+        "php": "^8.1",
+        "illuminate/contracts": "^9.0",
         "spatie/laravel-package-tools": "^1.9.2",
         "spatie/once": "^3.1"
     },
     "require-dev": {
         "filament/filament": "^2.1",
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^5.9|^6.0",
+        "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^6.23|^7.19",
-        "pestphp/pest-plugin-laravel": "^1.1",
+        "orchestra/testbench": "^7.19",
         "pestphp/pest": "^1.22",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",

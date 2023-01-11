@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translator)](https://github.com/Maggomann/filament-model-translator/blob/beta/LICENSE.md)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/Maggomann/filament-model-translator/run-tests.yml?branch%3Abeta&label=tests)](https://github.com/Maggomann/filament-model-translator/actions?query=workflow%3Arun-tests+branch%3Abeta) [![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translator)](https://github.com/Maggomann/filament-model-translator/blob/beta/LICENSE.md)
 
 ---
 
@@ -12,7 +12,7 @@ The Eloquent models are used internally in [filament's](https://filamentphp.com/
 
 ## Supported Versions
 
-PHP: `8.0` & `8.1`
+PHP: `8.1`
 
 Laravel: `8` & `9`
 

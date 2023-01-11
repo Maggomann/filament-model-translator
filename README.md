@@ -18,17 +18,10 @@ Laravel: `8` & `9`
 
 ## Installation
 
-Install package via composer.json file:
-```json
-    "require-dev": {
-        "maggomann/filament-model-translator": "dev-beta",
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:Maggomann/filament-model-translator.git"
-        }
-    ]
+You can install the package via composer:
+
+```console
+composer require maggomann/filament-model-translator
 ```
 
 ## How is it used?

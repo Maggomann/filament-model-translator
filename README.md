@@ -349,3 +349,15 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Disclaimer
+
+**Please note that these packages for Filament are not officially operated by Filament and do not provide any support or warranty from the Filament team. The use of these packages is at your own risk.**
+
+This project represents unofficial extensions for Filament and is maintained by an independent community of developers. We strive to maintain compatibility with the current versions of Filament, but we cannot guarantee that the packages will function flawlessly or be compatible with future versions of Filament.
+
+We recommend users to create backups of their projects and thoroughly test them before using these packages. If you have any questions, issues, or suggestions, we are available to assist you. However, please note that we cannot provide official support for these packages.
+
+We would like to emphasize that Filament is a separate developer community independent of this project. For more information about Filament, please refer to the official Filament website.
+
+Please read the license terms to learn more about the conditions for using these packages.

@@ -24,6 +24,7 @@
         "spatie/once": "^3.1"
     },
     "require-dev": {
+        "filament/filament": "^3.2",
         "filament/support": "*",
         "larastan/larastan": "^2.9",
         "laravel/pint": "^1.14",

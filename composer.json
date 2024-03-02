@@ -19,7 +19,6 @@
     "homepage": "https://github.com/maggomann/filament-model-translator",
     "require": {
         "php": "^8.1",
-        "illuminate/contracts": "^10.46",
         "spatie/laravel-package-tools": "^1.16",
         "spatie/once": "^3.1"
     },

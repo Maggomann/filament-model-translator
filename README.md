@@ -1,19 +1,20 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/Maggomann/filament-model-translator/run-tests.yml?branch%3Av0.x&label=tests)](https://github.com/Maggomann/filament-model-translator/actions?query=workflow%3Arun-tests+branch%3Av0.x) [![GitHub license](https://img.shields.io/github/license/Maggomann/filament-model-translator)](https://github.com/Maggomann/filament-model-translator/blob/v0.x/LICENSE.md) [![Total Downloads](https://img.shields.io/packagist/dt/maggomann/filament-model-translator.svg?style=flat-square)](https://packagist.org/packages/maggomann/filament-model-translator)
 ---
 
-# Filament model translator package for filament v2.x
-This package is tailored for [Filament Admin Panel v2.x](https://filamentphp.com/docs/2.x/admin/installation).
+# Filament model translator package for filament v3.x
 
-Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/2.x/admin/installation)
+This package is tailored for [Filament Admin Panel v3.x](https://filamentphp.com/docs/3.x/admin/installation).
+
+Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/3.x/admin/installation)
 
 The package translates the Eloquent models using a currently specified translation file.
-The Eloquent models are used internally in [filament's](https://filamentphp.com/docs/2.x/admin/installation) Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.
+The Eloquent models are used internally in [filament's](https://filamentphp.com/docs/3.x/admin/installation) Resources and RelationManagers for translation. This package provides traits for the Resources and RelationManagers to translate them automatically.
 
 ## Supported Versions
 
-PHP: `8.1`
+PHP: `^8.1`
 
-Laravel: `9`
+Laravel: `10`
 
 ## Installation
 
@@ -23,9 +24,28 @@ You can install the package via composer:
 composer require maggomann/filament-model-translator
 ```
 
+Add the plugin to your desired Filament panel:
+
+```php
+use Maggomann\FilamentModelTranslator\FilamentModelTranslatorServicePlugin;
+
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ...
+            ->plugins([
+                FilamentModelTranslatorServicePlugin::make()
+            ]);
+    }
+}
+```
+
 ## How is it used?
 
 ### The language files
+
 The translations are currently called from the `filament-model.php` translation file, which must be located in the following directory tree:
 
 ```sonsole
@@ -274,8 +294,6 @@ TextInput::make('name')
         ->required();
 ```
 
-
-
 You can use the trait `HasTranslateableModel` in the following ways:
 
 Example:
@@ -321,7 +339,6 @@ class Federation extends Model
 
     protected static ?string $translateablePackageKey = 'your-package-name::';
 ```
-
 
 ## Testing
 

@@ -26,7 +26,7 @@ trait HasTranslateableResources
         });
     }
 
-    protected static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): ?string
     {
         if (static::interfaceIsNotPresent()) {
             return parent::getNavigationGroup();

@@ -19,6 +19,6 @@ All notable changes to `filament-model-translator` will be documented in this fi
 
 **Full Changelog**: https://github.com/Maggomann/filament-model-translator/compare/v0.2.0...v0.2.1
 
-## 1.0.0 - 202X-XX-XX
+## v.0.x
 
 - initial release

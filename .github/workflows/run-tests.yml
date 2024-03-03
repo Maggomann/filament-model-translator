@@ -2,9 +2,9 @@ name: run-tests
 
 on:
   push:
-    branches: [upgrade-to-filament-v3]
+    branches: [v1.x]
   pull_request:
-    branches: [upgrade-to-filament-v3]
+    branches: [v1.x]
 
 jobs:
   test:

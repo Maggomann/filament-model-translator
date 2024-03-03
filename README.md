@@ -57,7 +57,7 @@ lang
         filament-model.php
 ```
 
-The translation file has the following content structure:
+The `filament-model.php` file within the package serves as a structured language file for translations. It enables defining translations for various entities such as models, their attributes, and navigation elements.
 
 ```php
 <?php
@@ -125,6 +125,12 @@ return [
     ],
 ];
 ```
+
+This file offers a structured way to organize language translations for various aspects of your application:
+
+- **Models:** Here, you can define translations for the names of your models, both in singular and plural forms.
+- **Attributes:** Contains translations for the different attributes of each model. For instance, you can set translations for attributes like name, slug, created_at, etc.
+- **Navigation:** Defines translations for the navigation groups associated with the models. In this case, the navigation group for each model is set to 'Seasons & Tournaments'.
 
 ### The trait HasTranslateableResources for the resource classes
 
@@ -286,12 +292,12 @@ The following method calls are available with the trait `HasTranslateableModel`:
 
 ```php
 <?php
-EloquentModel::ransAttribute('your_attributes_key');
+EloquentModel::transAttribute('your_attributes_key');
 
 // Example
 TextInput::make('name')
-        ->label(Federation::transAttribute('name'))
-        ->required();
+    ->label(Federation::transAttribute('name'))
+    ->required();
 ```
 
 You can use the trait `HasTranslateableModel` in the following ways:

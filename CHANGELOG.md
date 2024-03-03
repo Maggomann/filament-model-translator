@@ -2,6 +2,15 @@
 
 All notable changes to `filament-model-translator` will be documented in this file.
 
+## v1.0.1 - 2024-03-03
+
+### What's Changed
+
+* build(deps): bump actions/cache from 3 to 4 by @dependabot in https://github.com/Maggomann/filament-model-translator/pull/14
+* build(deps): bump actions/checkout from 3 to 4 by @dependabot in https://github.com/Maggomann/filament-model-translator/pull/15
+
+**Full Changelog**: https://github.com/Maggomann/filament-model-translator/compare/v1.0.0...v1.0.1
+
 ## v1.0.0 - 2024-03-03
 
 ### What's Changed

@@ -49,13 +49,12 @@ class AdminPanelProvider extends PanelProvider
 
 The translations are currently called from the `filament-model.php` translation file, which must be located in the following directory tree:
 
-```sonsole
-resources
-    lang
-        de
-            filament-model.php
-        en
-            filament-model.php
+```console
+lang
+    de
+        filament-model.php
+    en
+        filament-model.php
 ```
 
 The translation file has the following content structure:

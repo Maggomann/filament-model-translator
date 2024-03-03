@@ -2,6 +2,15 @@
 
 All notable changes to `filament-model-translator` will be documented in this file.
 
+## v1.0.0 - 2024-03-03
+
+### What's Changed
+
+* Upgrade to filament v3 by @Maggomann in https://github.com/Maggomann/filament-model-translator/pull/12
+* refactor: Update branch names in run-tests.yml by @Maggomann in https://github.com/Maggomann/filament-model-translator/pull/13
+
+**Full Changelog**: https://github.com/Maggomann/filament-model-translator/compare/v0.2.2...v1.0.0
+
 ## v0.2.2 - 2024-03-02
 
 ### What's Changed

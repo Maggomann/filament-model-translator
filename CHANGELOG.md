@@ -2,6 +2,14 @@
 
 All notable changes to `filament-model-translator` will be documented in this file.
 
+## v1.1.0 - 2024-05-05
+
+### What's Changed
+
+* feat: Add getTitle method to HasTranslateable trait by @Maggomann in https://github.com/Maggomann/filament-model-translator/pull/17
+
+**Full Changelog**: https://github.com/Maggomann/filament-model-translator/compare/v1.0.2...v1.1.0
+
 ## v1.0.2 - 2024-03-03
 
 ### What's Changed

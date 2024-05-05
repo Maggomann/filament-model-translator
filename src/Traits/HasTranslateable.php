@@ -3,6 +3,7 @@
 namespace Maggomann\FilamentModelTranslator\Traits;
 
 use Closure;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 trait HasTranslateable
@@ -30,6 +31,11 @@ trait HasTranslateable
     public static function translateablePackageKey(): string
     {
         return static::$translateablePackageKey;
+    }
+
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return static::$title ?? static::getPluralModelLabel();
     }
 
     public static function getModelLabel(): string

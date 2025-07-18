@@ -2,6 +2,14 @@
 
 All notable changes to `filament-model-translator` will be documented in this file.
 
+## v1.1.1 - 2025-07-18
+
+### What's Changed
+
+* build(deps): bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/Maggomann/filament-model-translator/pull/18
+
+**Full Changelog**: https://github.com/Maggomann/filament-model-translator/compare/v1.1.0...v1.1.1
+
 ## v1.1.0 - 2024-05-05
 
 ### What's Changed

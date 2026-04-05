@@ -24,10 +24,10 @@
     },
     "require-dev": {
         "filament/filament": "^3.2",
-        "filament/support": "*",
+        "filament/support": "^3.3",
         "larastan/larastan": "^2.9",
         "laravel/pint": "^1.14",
-        "orchestra/testbench": "^8.20|^9.0",
+        "orchestra/testbench": "^8.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.3",

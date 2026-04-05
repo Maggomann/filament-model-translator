@@ -2,9 +2,11 @@ name: run-tests
 
 on:
   push:
-    branches: [v2.x]
+    branches: [v1.x
+]
   pull_request:
-    branches: [v2.x]
+    branches: [v1.x
+]
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true

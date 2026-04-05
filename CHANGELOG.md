@@ -2,6 +2,14 @@
 
 All notable changes to `filament-model-translator` will be documented in this file.
 
+## v2.0.0 - 2026-04-05
+
+### What's Changed
+
+* chore: release v2.0.0 – drop PHP 8.1, require Laravel 11 and PHP 8.2+ @Maggomann in https://github.com/Maggomann/filament-model-translator/pull/23
+
+**Full Changelog**: https://github.com/Maggomann/filament-model-translator/compare/v1.1.1...v2.0.0
+
 ## v1.1.1 - 2025-07-18
 
 ### What's Changed

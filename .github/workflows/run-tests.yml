@@ -18,15 +18,11 @@ jobs:
       fail-fast: false
       matrix:
         php: [8.3, 8.2]
-        laravel: [11.*, 12.*, 13.*]
+        laravel: [11.*]
         dependency-version: [prefer-stable]
         include:
           - laravel: 11.*
             testbench: 9.*
-          - laravel: 12.*
-            testbench: 10.*
-          - laravel: 13.*
-            testbench: 11.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 

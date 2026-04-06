@@ -12,9 +12,10 @@ The Eloquent models are used internally in [filament's](https://filamentphp.com/
 
 ## Supported Versions
 
-| PHP Versions | Laravel Versions |
-|--------------|------------------|
-| 8.3, 8.2     | 11.*             |
+| Branch | Version           | PHP           | Laravel | Filament |
+|--------|-------------------|---------------|---------|----------|
+| `v2.x` | `2.0.1`           | 8.2, 8.3      | 11.*    | ^3.0     |
+| `v1.x` | `1.1.1` _(final)_ | 8.1, 8.2, 8.3 | 10.*    | ^3.0     |
 
 ## Installation
 
